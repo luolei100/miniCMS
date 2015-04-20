@@ -7,11 +7,14 @@
  */
 package com._30.web.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com._30.common.util.MongoDBUtil;
 import com._30.web.service.IMenuService;
+import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 /**
@@ -28,13 +31,19 @@ public class MenuServiceImpl implements IMenuService {
 	@Override
 	public List<DBObject> getMenu(int id) {
 		DBCollection dbc = MongoDBUtil.getDB().getCollection(MONGO_COLLECTION);
-		
-		
-		dbc.find(ref);
-		
-		
-		
-		return null;
+
+		DBObject query = new BasicDBObject();
+
+		query.put("id", id);
+
+		DBCursor cursor = dbc.find(query);
+
+		List<DBObject> results = new ArrayList<>();
+		while (cursor.hasNext()) {
+			results.add(cursor.curr());
+		}
+
+		return results;
 	}
 
 }
