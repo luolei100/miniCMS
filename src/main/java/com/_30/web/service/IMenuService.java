@@ -18,7 +18,7 @@ import com.mongodb.DBObject;
 public interface IMenuService {
 	
 	
-	public static final String MONGO_COLLECTION = "mini_cms.menus";
+	public static final String MONGO_COLLECTION = "back_menu";
 	
 	/**
 	 * 获取菜单

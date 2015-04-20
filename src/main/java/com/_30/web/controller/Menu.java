@@ -13,8 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com._30.web.service.IMenuService;
 import com.mongodb.DBObject;
@@ -32,8 +34,9 @@ public class Menu {
 	@Autowired
 	private IMenuService menuService = null;
 
-	@RequestMapping(value = "getMenu/${id}", method = RequestMethod.GET)
-	public List<DBObject> getMenu(int id) {
+	@RequestMapping(value = "getMenu/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<DBObject> getMenu(@PathVariable int id) {
 		logger.debug("获取菜单列表,菜单节点:{}", id);
 
 		List<DBObject> menus = this.menuService.getMenu(id);

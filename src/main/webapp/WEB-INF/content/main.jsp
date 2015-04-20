@@ -28,13 +28,8 @@
 	<div data-options="region:'north',border:false"
 		style="height: 60px; background: #B3DFDA; padding: 10px; text-align: right;">这里是介绍,及用户信息</div>
 
-
-
-
 	<div data-options="region:'west',split:true,title:'West'"
 		style="width: 150px; padding: 10px;">
-
-
 
 		<div class="easyui-panel" style="padding: 5px">
 			<ul class="easyui-tree"

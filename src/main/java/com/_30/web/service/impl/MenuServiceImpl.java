@@ -10,6 +10,8 @@ package com._30.web.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com._30.common.util.MongoDBUtil;
 import com._30.web.service.IMenuService;
 import com.mongodb.BasicDBObject;
@@ -21,6 +23,7 @@ import com.mongodb.DBObject;
  * @author luolei
  * 
  */
+@Service
 public class MenuServiceImpl implements IMenuService {
 
 	/*
@@ -40,7 +43,7 @@ public class MenuServiceImpl implements IMenuService {
 
 		List<DBObject> results = new ArrayList<>();
 		while (cursor.hasNext()) {
-			results.add(cursor.curr());
+			results.add(cursor.next());
 		}
 
 		return results;
