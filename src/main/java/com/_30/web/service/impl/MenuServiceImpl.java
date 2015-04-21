@@ -10,6 +10,8 @@ package com._30.web.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com._30.common.util.MongoDBUtil;
@@ -26,6 +28,9 @@ import com.mongodb.DBObject;
 @Service
 public class MenuServiceImpl implements IMenuService {
 
+	private static final Logger logger = LoggerFactory
+			.getLogger(MenuServiceImpl.class);
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -37,13 +42,18 @@ public class MenuServiceImpl implements IMenuService {
 
 		DBObject query = new BasicDBObject();
 
-		query.put("id", id);
+		query.put("pid", (float)id);
 
 		DBCursor cursor = dbc.find(query);
 
 		List<DBObject> results = new ArrayList<>();
 		while (cursor.hasNext()) {
-			results.add(cursor.next());
+
+			DBObject c = cursor.next();
+
+			logger.debug("..."+c);
+
+			results.add(c);
 		}
 
 		return results;

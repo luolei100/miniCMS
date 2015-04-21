@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,11 +31,8 @@
 	<div data-options="region:'west',split:true,title:'West'"
 		style="width: 150px; padding: 10px;">
 
-		<div class="easyui-panel" style="padding: 5px">
-			<ul class="easyui-tree"
-				data-options="url:'${contextPath }/getMenu/0',method:'delete',loadFilter:treeFilter"></ul>
-
-		</div>
+		<ul class="easyui-tree"
+			data-options="method:'get',onBeforeLoad:changeUrl"></ul>
 
 
 	</div>
@@ -59,7 +56,14 @@
 	function treeFilter(d, p) {
 
 	}
-	
+
+	function changeUrl(n, p) {
+		var id = 0;
+		if (n) {
+			id = n.id;
+		}
+		$(this).tree('options').url = "${contextPath }/menu/getMenu/" + id;
+	}
 </script>
 
 
