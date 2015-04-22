@@ -47,7 +47,7 @@ public class MenuServiceImpl implements IMenuService {
 
 		DBObject query = new BasicDBObject();
 
-		query.put("pid", id);
+		query.put("_parentId", id);
 
 		DBCursor cursor = dbc.find(query);
 

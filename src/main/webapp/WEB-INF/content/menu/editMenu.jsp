@@ -7,78 +7,29 @@
 				animate: true,
 				collapsible: true,
 				fitColumns: true,
-				url: 'treegrid_data2.json',
+				onBeforeLoad:changeGridUrl,
 				method: 'get',
 				idField: 'id',
 				treeField: 'text',
-				onContextMenu: contextMenu">
+				toolbar:'#mm',
+				onLoadSuccess:function(){$(this).treegrid('expandAll')}">
 	<thead>
 		<tr>
-			<th data-options="field:'text',width:180">名称</th>
-			<th data-options="field:'url',width:60,align:'right'">url</th>
-			<th data-options="field:'icon',width:80">图标</th>
+			<th data-options="field:'id',width:0,hidden:'hidden'"><th
+				data-options="field:'text',width:150,align:'center',editor:'text'">名称</th>
+			<th data-options="field:'url',width:150,align:'center',editor:'text'">url</th>
+			<th
+				data-options="field:'iconCls',width:150,align:'center',editor:'text'">图标</th>
 		</tr>
 	</thead>
 </table>
-<div id="mm" class="easyui-menu" style="width: 120px;">
-	<div onclick="append()" data-options="iconCls:'icon-add'">添加</div>
-	<div onclick="removeIt()" data-options="iconCls:'icon-remove'">删除</div>
-	<div onclick="edit()" data-options="iconCls:'icon-edit'">修改</div>
-	<div class="menu-sep"></div>
-	<div onclick="collapse()">收缩</div>
-	<div onclick="expand()">展开</div>
+<div id="mm" style="padding:5px;height:auto">
+	<div style="margin-bottom:5px">
+		<a href="javascript:void(0)" onclick="save()" class="easyui-linkbutton" iconCls="icon-save" plain="true">保存</a>|
+		<a href="javascript:void(0)" onclick="append()" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>|
+		<a href="javascript:void(0)" onclick="edit()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>|
+		<a href="javascript:void(0)" onclick="accept()" class="easyui-linkbutton" iconCls="icon-ok" plain="true">确定</a>|
+		<a href="javascript:void(0)" onclick="cancel()" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" >丢弃</a>|
+		<a href="javascript:void(0)" onclick="removeit()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">刪除</a>|
+	</div>
 </div>
-
-
-<script type="text/javascript">
-<!--
-	//-->
-
-	function edit() {
-		var tg = $("#tg");
-		var node = tg.treegrid('getSelected');
-		tg.beginEdit(node.id);
-	}
-
-	function contextMenu(e, row) {
-		e.preventDefault();
-		$(this).treegrid('select', row.id);
-		$('#mm').menu('show', {
-			left : e.pageX,
-			top : e.pageY
-		});
-	}
-	var idIndex = 100;
-	function append() {
-		idIndex++;
-		d2.setMonth(d2.getMonth() + 1);
-		var node = $('#tg').treegrid('getSelected');
-		$('#tg').treegrid('append', {
-			parent : node.id,
-			data : [ {
-				id : idIndex,
-				text : '目录名称' + idIndex,
-				url : ''
-			} ]
-		})
-	}
-	function removeIt() {
-		var node = $('#tg').treegrid('getSelected');
-		if (node) {
-			$('#tg').treegrid('remove', node.id);
-		}
-	}
-	function collapse() {
-		var node = $('#tg').treegrid('getSelected');
-		if (node) {
-			$('#tg').treegrid('collapse', node.id);
-		}
-	}
-	function expand() {
-		var node = $('#tg').treegrid('getSelected');
-		if (node) {
-			$('#tg').treegrid('expand', node.id);
-		}
-	}
-</script>
-
