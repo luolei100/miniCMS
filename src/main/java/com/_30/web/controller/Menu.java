@@ -34,6 +34,11 @@ public class Menu {
 	@Autowired
 	private IMenuService menuService = null;
 
+	@RequestMapping("edit")
+	public String editMenu() {
+		return "/menu/editMenu";
+	}
+
 	@RequestMapping(value = "getMenu/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<DBObject> getMenu(@PathVariable int id) {

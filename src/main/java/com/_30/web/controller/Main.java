@@ -25,13 +25,26 @@ public class Main {
 	private static final Logger logger = LoggerFactory
 			.getLogger(PathInitializeListener.class);
 
-	public Main() {
-		logger.debug("spring 已启动扫描");
-	}
+	private static final String BACKGROUND_PATH = "backgroud";
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
 		return "main";
+	}
+
+	@RequestMapping("center")
+	public String center() {
+		return BACKGROUND_PATH + "/framework/center";
+	}
+
+	@RequestMapping("north")
+	public String north() {
+		return BACKGROUND_PATH + "/framework/north";
+	}
+
+	@RequestMapping("south")
+	public String south() {
+		return BACKGROUND_PATH + "/framework/south";
 	}
 
 }

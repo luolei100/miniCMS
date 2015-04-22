@@ -30,7 +30,12 @@ public class MenuServiceImpl implements IMenuService {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(MenuServiceImpl.class);
-
+	
+	
+	public MenuServiceImpl() {
+		logger.debug("初始化完成");
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -42,7 +47,7 @@ public class MenuServiceImpl implements IMenuService {
 
 		DBObject query = new BasicDBObject();
 
-		query.put("pid", (float)id);
+		query.put("pid", id);
 
 		DBCursor cursor = dbc.find(query);
 
