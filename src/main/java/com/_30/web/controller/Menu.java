@@ -49,4 +49,13 @@ public class Menu {
 		return menus;
 	}
 
+	@RequestMapping(value = "edit", method = RequestMethod.POST)
+	@ResponseBody
+	public String edit(String json) {
+
+		logger.debug("接受到的json:{}", json);
+
+		return "";
+	}
+
 }

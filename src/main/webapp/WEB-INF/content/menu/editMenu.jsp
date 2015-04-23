@@ -12,7 +12,8 @@
 				idField: 'id',
 				treeField: 'text',
 				toolbar:'#mm',
-				onLoadSuccess:function(){$(this).treegrid('expandAll')}">
+				onLoadSuccess:function(){$(this).treegrid('expandAll')},
+				onDblClickRow:edit">
 	<thead>
 		<tr>
 			<th data-options="field:'id',width:0,hidden:'hidden'"><th
