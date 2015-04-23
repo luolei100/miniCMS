@@ -6,11 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
-<script src="http://www.jeasyui.net/Public/js/jquery.js"></script>
-<script
-	src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="${statics }/js/menu.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="http://www.jeasyui.net/Public/js/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css"
@@ -64,6 +59,14 @@
 	var tabs = $("#tabs");
 	var basePath = '${contextPath}';
 </script>
+
+<script src="http://www.jeasyui.net/Public/js/jquery.js"></script>
+<script
+	src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
+<script
+	src="http://cdn.bootcss.com/jquery-json/2.5.1/jquery.json.min.js"></script>
+<script type="text/javascript" src="${statics }/js/menu.js"></script>
+
 <script type="text/javascript" src="${statics }/js/main.js"></script>
 
 </html>
