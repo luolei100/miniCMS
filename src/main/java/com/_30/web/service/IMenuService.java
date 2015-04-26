@@ -26,6 +26,12 @@ public interface IMenuService {
 	 * @return
 	 */
 	public List<DBObject> getMenu(int id) ;
+
+	/**
+	 * 菜单修改,
+	 * @param json 已修改的json串
+	 */
+	public String edit(String json);
 	
 	
 	

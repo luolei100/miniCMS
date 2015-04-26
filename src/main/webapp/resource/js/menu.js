@@ -12,15 +12,14 @@ function edit() {
 }
 function save() {
 	var rows = $('#tg').treegrid('getChanges');
-
 	if (rows && rows.length > 0) {
 
 		$.ajax({
 			async : false,
 			type : 'post',
-			url : basePath + "menu/edit",
-			contentType : 'application.json',
-			data : rows.serialize(),
+			url : basePath + "/menu/edit",
+			contentType : 'application/json',
+			data : JSON.stringify(rows),
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
 				alert("请求错误!!");
 			},

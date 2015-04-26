@@ -55,16 +55,18 @@
 
 
 
-<script type="text/javascript">
-	var tabs = $("#tabs");
-	var basePath = '${contextPath}';
-</script>
+
 
 <script src="http://www.jeasyui.net/Public/js/jquery.js"></script>
 <script
 	src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
 <script
 	src="http://cdn.bootcss.com/jquery-json/2.5.1/jquery.json.min.js"></script>
+
+<script type="text/javascript">
+	var tabs = $("#tabs");
+	var basePath = '${contextPath}';
+</script>
 <script type="text/javascript" src="${statics }/js/menu.js"></script>
 
 <script type="text/javascript" src="${statics }/js/main.js"></script>

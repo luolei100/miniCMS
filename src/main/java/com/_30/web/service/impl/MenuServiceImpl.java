@@ -30,12 +30,11 @@ public class MenuServiceImpl implements IMenuService {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(MenuServiceImpl.class);
-	
-	
+
 	public MenuServiceImpl() {
 		logger.debug("初始化完成");
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -43,7 +42,7 @@ public class MenuServiceImpl implements IMenuService {
 	 */
 	@Override
 	public List<DBObject> getMenu(int id) {
-		DBCollection dbc = MongoDBUtil.getDB().getCollection(MONGO_COLLECTION);
+		DBCollection dbc = getDefaultCollection();
 
 		DBObject query = new BasicDBObject();
 
@@ -56,12 +55,34 @@ public class MenuServiceImpl implements IMenuService {
 
 			DBObject c = cursor.next();
 
-			logger.debug("..."+c);
+			logger.debug("..." + c);
 
 			results.add(c);
 		}
-
 		return results;
+	}
+
+	/**
+	 * @return
+	 */
+	private DBCollection getDefaultCollection() {
+		DBCollection dbc = MongoDBUtil.getDB().getCollection(MONGO_COLLECTION);
+		return dbc;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com._30.web.service.IMenuService#edit(java.lang.String)
+	 */
+	@Override
+	public String edit(String json) {
+
+		DBCollection dbc = getDefaultCollection();
+
+		// dbc.save(jo);
+
+		return null;
 	}
 
 }

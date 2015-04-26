@@ -9,11 +9,15 @@ package com._30.web.controller;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+import org.hibernate.validator.constraints.NotBlank;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -51,10 +55,17 @@ public class Menu {
 
 	@RequestMapping(value = "edit", method = RequestMethod.POST)
 	@ResponseBody
-	public String edit(String json) {
-
+	public String edit(@RequestBody @NotBlank(message="请求参数不能为空") String json,BindingResult br) {
+		
+		
+		if(br.hasErrors()) {
+			return br.getFieldError("json").getDefaultMessage();
+		}
 		logger.debug("接受到的json:{}", json);
-
+		
+		this.menuService.edit(json);
+		
+		
 		return "";
 	}
 
