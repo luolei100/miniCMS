@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet" type="text/css"
-	href="http://www.jeasyui.net/Public/js/easyui/themes/icon.css">
+	href="${statics }/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css"
-	href="http://www.jeasyui.net/Public/js/easyui/themes/bootstrap/easyui.css">
+	href="${statics }/easyui/themes/bootstrap/easyui.css">
 <style type="text/css">
 </style>
 
@@ -25,7 +25,7 @@
 		style="width: 150px; padding: 10px;">
 
 		<ul class="easyui-tree"
-			data-options="method:'get',onBeforeLoad:changeUrl,onClick:toURL,lines:true"></ul>
+			data-options="method:'get',url:'${contextPath }/menu/getMenu/1',onClick:toURL,lines:true"></ul>
 
 
 	</div>
@@ -57,9 +57,9 @@
 
 
 
-<script src="http://www.jeasyui.net/Public/js/jquery.js"></script>
+<script src="${statics }/easyui/jquery.min.js"></script>
 <script
-	src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
+	src="${statics }/easyui/jquery.easyui.min.js"></script>
 <script
 	src="http://cdn.bootcss.com/jquery-json/2.5.1/jquery.json.min.js"></script>
 

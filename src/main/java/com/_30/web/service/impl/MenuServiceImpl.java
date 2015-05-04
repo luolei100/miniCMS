@@ -10,6 +10,7 @@ package com._30.web.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.types.BasicBSONList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,9 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
+import com.mongodb.WriteConcern;
+import com.mongodb.WriteResult;
+import com.mongodb.util.JSON;
 
 /**
  * @author luolei
@@ -46,7 +50,7 @@ public class MenuServiceImpl implements IMenuService {
 
 		DBObject query = new BasicDBObject();
 
-		query.put("_parentId", id);
+		query.put("id", id);
 
 		DBCursor cursor = dbc.find(query);
 
@@ -80,9 +84,22 @@ public class MenuServiceImpl implements IMenuService {
 
 		DBCollection dbc = getDefaultCollection();
 
-		// dbc.save(jo);
+		BasicBSONList object = (BasicBSONList) JSON.parse(json);
 
-		return null;
+		List<DBObject> list = new ArrayList<>();
+		for (int i = 0; null != object && object.size() > i; i++) {
+			
+			list.add((DBObject) object.get(i));
+		}
+		// dbc.save(jo);
+		dbc.drop();
+		WriteResult result = dbc.insert(list,WriteConcern.ACKNOWLEDGED);
+		
+		if(result.getN()<1){
+			return "添加失败";
+		}
+		
+		return "添加成功";
 	}
 
 }

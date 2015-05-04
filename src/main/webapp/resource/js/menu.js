@@ -11,7 +11,7 @@ function edit() {
 	}
 }
 function save() {
-	var rows = $('#tg').treegrid('getChanges');
+	var rows = $('#tg').treegrid('getData');
 	if (rows && rows.length > 0) {
 
 		$.ajax({
@@ -24,7 +24,7 @@ function save() {
 				alert("请求错误!!");
 			},
 			success : function(data, textStatus, jqXHR) {
-				alert(data.message);
+				alert(data);
 				if (data.status) {
 					$('#tg').relaod();
 				}

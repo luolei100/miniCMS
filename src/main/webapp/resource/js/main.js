@@ -116,12 +116,3 @@ function refreshTab(title) {
 			top : e.pageY
 		}).data('tabTitle', title);
 	}
-
-	function changeUrl(n, p) {
-		var id = 0;
-		if (n) {
-			id = n.id;
-		}
-		$(this).tree('options').url = basePath+"/menu/getMenu/" + id;
-		p.id = 'unuseable';
-	}

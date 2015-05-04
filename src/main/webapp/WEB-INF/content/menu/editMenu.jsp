@@ -7,7 +7,7 @@
 				animate: true,
 				collapsible: true,
 				fitColumns: true,
-				onBeforeLoad:changeGridUrl,
+				url:'${contextPath }/menu/getMenu/1',
 				method: 'get',
 				idField: 'id',
 				treeField: 'text',
