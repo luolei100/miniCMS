@@ -3,7 +3,7 @@
 <script>
    function logout(flag){
 		$.ajax({
-		url:'${pageContext.request.contextPath}/logoutAction.html',
+		url:'${pageContext.request.contextPath}/bg/logoutAction.html',
 		success:function(result){
 		var r = $.parseJSON(result);
 		  if(r.success){

@@ -7,13 +7,14 @@
 				animate: true,
 				collapsible: true,
 				fitColumns: true,
-				url:'${contextPath }/menu/getMenu/1',
+				url:'${contextPath }/bg/menu/getMenu/1',
 				method: 'get',
 				idField: 'id',
 				treeField: 'text',
 				toolbar:'#mm',
 				onLoadSuccess:function(){$(this).treegrid('expandAll')},
-				onDblClickRow:edit">
+				onDblClickRow:edit ,
+				onClickRow:accept">
 	<thead>
 		<tr>
 			<th data-options="field:'id',width:0,hidden:'hidden'"><th

@@ -1,7 +1,7 @@
 package com._30.mongo;
 
 import com._30.common.util.MongoDBUtil;
-import com._30.web.service.IMenuService;
+import com._30.web.background.service.IMenuService;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -16,7 +16,7 @@ public class MongoDBCRUDTest {
 
 		DB db = MongoDBUtil.getDB();
 
-		DBCollection coll = db.getCollection(IMenuService.MONGO_COLLECTION);
+		DBCollection coll = db.getCollection(IMenuService.MENU_COLLECTION);
 
 		DBObject o = new BasicDBObject();
 

@@ -18,6 +18,13 @@ function refreshTab(title) {
 			
 			return ;
 		}
+		
+		if(tabs.tabs('exists',n.text)) {
+			tabs.tabs('select',n.text);
+			refreshTab(n.text);
+			return ;
+		}
+		
 		$.messager.progress({
 			text : '页面加载中....',
 			interval : 100
@@ -37,7 +44,7 @@ function refreshTab(title) {
 			tools : [ {
 				iconCls : 'icon-mini-refresh',
 				handler : function() {
-					refreshTab(tabs, n.text);
+					refreshTab(n.text);
 				}
 			} ]
 		});

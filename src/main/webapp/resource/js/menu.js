@@ -1,8 +1,7 @@
 var editingId;
 function edit() {
 	if (editingId != undefined) {
-		$('#tg').treegrid('select', editingId);
-		return;
+		accept() ;
 	}
 	var row = $('#tg').treegrid('getSelected');
 	if (row) {
@@ -17,7 +16,7 @@ function save() {
 		$.ajax({
 			async : false,
 			type : 'post',
-			url : basePath + "/menu/edit",
+			url : basePath + "/bg/menu/edit",
 			contentType : 'application/json',
 			data : JSON.stringify(rows),
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -102,6 +101,6 @@ function changeGridUrl(n, p) {
 	if (n) {
 		id = n.id;
 	}
-	$(this).treegrid('options').url = basePath + "/menu/getMenu/" + id;
+	$(this).treegrid('options').url = basePath + "/bg/menu/getMenu/" + id;
 	p.id = 'unuseable';
 }

@@ -7,12 +7,14 @@
  */
 package com._30.common.util;
 
+import java.lang.reflect.Field;
 import java.net.UnknownHostException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.mongodb.DB;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoException;
@@ -48,6 +50,7 @@ public class MongoDBUtil {
 	public static DB getDB(String dbName) {
 		return mc.getDB(dbName);
 	}
+
 
 	/**
 	 * 初始化连接池

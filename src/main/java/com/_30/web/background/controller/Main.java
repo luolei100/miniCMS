@@ -5,7 +5,7 @@
  * @date 2015年4月19日 下午1:42:22 
  * @version V1.0   
  */
-package com._30.web.controller;
+package com._30.web.background.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com._30.common.sys.PathInitializeListener;
+import com._30.common.util.Common;
 
 /**
  * @author luolei
  * 
  */
-@RequestMapping("/main")
+@RequestMapping("bg/main")
 @Controller
 public class Main {
 	private static final Logger logger = LoggerFactory
 			.getLogger(PathInitializeListener.class);
 
-	private static final String BACKGROUND_PATH = "backgroud";
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index() {
@@ -34,17 +34,17 @@ public class Main {
 
 	@RequestMapping("center")
 	public String center() {
-		return BACKGROUND_PATH + "/framework/center";
+		return Common.BACKGROUND_PATH + "/framework/center";
 	}
 
 	@RequestMapping("north")
 	public String north() {
-		return BACKGROUND_PATH + "/framework/north";
+		return Common.BACKGROUND_PATH + "/framework/north";
 	}
 
 	@RequestMapping("south")
 	public String south() {
-		return BACKGROUND_PATH + "/framework/south";
+		return Common.BACKGROUND_PATH + "/framework/south";
 	}
 
 }

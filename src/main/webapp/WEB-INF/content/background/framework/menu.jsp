@@ -5,7 +5,7 @@
 	$(function() {
 
 		ctrlTree = $('#ctrlTree').tree({
-			url : '${pageContext.request.contextPath}/menuAction.html',
+			url : '${pageContext.request.contextPath}/bg/menuAction.html',
 			lines : true,
 			onClick : function(node) {
 				addTab( centerTabs, node);

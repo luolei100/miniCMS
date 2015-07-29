@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans:beans xmlns="http://www.springframework.org/schema/security"  
+    	xmlns:beans="http://www.springframework.org/schema/beans"   
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+		xsi:schemaLocation="http://www.springframework.org/schema/beans   
+				http://www.springframework.org/schema/beans/spring-beans-3.0.xsd    
+				http://www.springframework.org/schema/security   
+				http://www.springframework.org/schema/security/spring-security-3.2.xsd">  
+	<!-- 启用注解控制权限 -->
+	<global-method-security pre-post-annotations="enabled"
+		secured-annotations="enabled" jsr250-annotations="enabled"
+		proxy-target-class="true" />
+
+	<http use-expressions="true" access-denied-page="/powermiss.jsp"
+		entry-point-ref="authenticationProcessingFilterEntryPoint">
+		<intercept-url pattern="/index.jsp" access="permitAll" />
+
+
+		<custom-filter ref="validateCodeAuthenticationFilter"
+			position="FORM_LOGIN_FILTER" />
+
+		<logout invalidate-session="true" logout-success-url="/index.jsp"
+			logout-url="/logout" />
+	</http>
+	<!-- 配置一个认证管理器 -->
+	<authentication-manager alias="authenticationManager">
+		<!-- 使用自定义的UserDetailService -->
+		<authentication-provider user-service-ref="accountService">
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>

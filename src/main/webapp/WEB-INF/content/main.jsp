@@ -18,25 +18,25 @@
 <body>
 <body class="easyui-layout">
 	<div
-		data-options="region:'north',border:false,href:'${contextPath }/main/north'"
+		data-options="region:'north',border:false,href:'${contextPath }/bg/main/north'"
 		style="height: 50px; background: #B3DFDA; padding: 10px; text-align: right;"></div>
 
 	<div data-options="region:'west',split:true,title:'功能菜单'"
 		style="width: 150px; padding: 10px;">
 
 		<ul class="easyui-tree"
-			data-options="method:'get',url:'${contextPath }/menu/getMenu/1',onClick:toURL,lines:true"></ul>
+			data-options="method:'get',url:'${contextPath }/bg/menu/getMenu/1',onClick:toURL,lines:true"></ul>
 
 
 	</div>
 
 	<div
-		data-options="region:'south',border:false,href:'${contextPath }/main/south'"
+		data-options="region:'south',border:false,href:'${contextPath }/bg/main/south'"
 		style="height: 50px; background: #A9FACD; padding: 10px;"></div>
 	<div class="easyui-tabs" id="tabs"
 		data-options="region:'center',onContextMenu:tabsContent">
 
-		<div title="欢迎页" data-options="href:'${contextPath }/main/center'"></div>
+		<div title="欢迎页" data-options="href:'${contextPath }/bg/main/center'"></div>
 
 	</div>
 

@@ -5,7 +5,7 @@
  * @date 2015年4月19日 下午8:27:00 
  * @version V1.0   
  */
-package com._30.web.service.impl;
+package com._30.web.background.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com._30.common.util.MongoDBUtil;
-import com._30.web.service.IMenuService;
+import com._30.web.background.service.IMenuService;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
@@ -34,10 +34,6 @@ public class MenuServiceImpl implements IMenuService {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(MenuServiceImpl.class);
-
-	public MenuServiceImpl() {
-		logger.debug("初始化完成");
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -70,7 +66,7 @@ public class MenuServiceImpl implements IMenuService {
 	 * @return
 	 */
 	private DBCollection getDefaultCollection() {
-		DBCollection dbc = MongoDBUtil.getDB().getCollection(MONGO_COLLECTION);
+		DBCollection dbc = MongoDBUtil.getDB().getCollection(MENU_COLLECTION);
 		return dbc;
 	}
 
@@ -88,17 +84,17 @@ public class MenuServiceImpl implements IMenuService {
 
 		List<DBObject> list = new ArrayList<>();
 		for (int i = 0; null != object && object.size() > i; i++) {
-			
+
 			list.add((DBObject) object.get(i));
 		}
 		// dbc.save(jo);
 		dbc.drop();
-		WriteResult result = dbc.insert(list,WriteConcern.ACKNOWLEDGED);
-		
-		if(result.getN()<1){
+		WriteResult result = dbc.insert(list, WriteConcern.ACKNOWLEDGED);
+
+		if (result.getN() < 1) {
 			return "添加失败";
 		}
-		
+
 		return "添加成功";
 	}
 

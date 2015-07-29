@@ -5,7 +5,7 @@
 * @date 2015年4月19日 下午6:09:53 
 * @version V1.0   
 */
-package com._30.web.service;
+package com._30.web.background.service;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import com.mongodb.DBObject;
 public interface IMenuService {
 	
 	
-	public static final String MONGO_COLLECTION = "back_menu";
+	public static final String MENU_COLLECTION = "back_menu";
 	
 	/**
 	 * 获取菜单
